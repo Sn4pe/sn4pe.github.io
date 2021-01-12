@@ -3,65 +3,65 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/2021/hi/</loc>
+    <loc>https://sn4pe.github.io/2021/hi/</loc>
     <lastmod>2021-01-12T02:47:03+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/posts/</loc>
+    <loc>https://sn4pe.github.io/posts/</loc>
     <lastmod>2021-01-12T02:47:03+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="/es/posts/"
+                href="https://sn4pe.github.io/es/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/posts/"
+                href="https://sn4pe.github.io/posts/"
                 />
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://sn4pe.github.io/</loc>
     <lastmod>2021-01-12T02:47:03+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="/es/"
+                href="https://sn4pe.github.io/es/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/"
+                href="https://sn4pe.github.io/"
                 />
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://sn4pe.github.io/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="/es/categories/"
+                href="https://sn4pe.github.io/es/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/categories/"
+                href="https://sn4pe.github.io/categories/"
                 />
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://sn4pe.github.io/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="/es/tags/"
+                href="https://sn4pe.github.io/es/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/tags/"
+                href="https://sn4pe.github.io/tags/"
                 />
   </url>
   

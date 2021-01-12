@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Sn4pe</title>
-    <link>/es/posts/</link>
+    <link>https://sn4pe.github.io/es/posts/</link>
     <description>Recent content in Posts on Sn4pe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Jan 2021 02:47:03 +0100</lastBuildDate><atom:link href="/es/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jan 2021 02:47:03 +0100</lastBuildDate><atom:link href="https://sn4pe.github.io/es/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hola</title>
-      <link>/es/2021/hola/</link>
+      <link>https://sn4pe.github.io/es/2021/hola/</link>
       <pubDate>Tue, 12 Jan 2021 02:47:03 +0100</pubDate>
       
-      <guid>/es/2021/hola/</guid>
+      <guid>https://sn4pe.github.io/es/2021/hola/</guid>
       <description>I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated. Thank you for reading!I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated. Thank you for reading!I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated.</description>
     </item>
     
