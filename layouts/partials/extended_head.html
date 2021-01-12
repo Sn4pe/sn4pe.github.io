@@ -1,6 +1,0 @@
-<!--
-To add an extended head section, please create
-`layouts/partials/extended_head.html` in your Hugo directory.
--->
-{{ range .AlternativeOutputFormats -}} {{ printf `
-<link rel="%s" type="%s" href="/es/index.xml" title="%s spanish" />` .Rel .MediaType.Type $.Site.Title | safeHTML }} {{ end -}}

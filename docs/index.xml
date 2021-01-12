@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Terminal</title>
+    <title>Sn4pe</title>
     <link>https://sn4pe.github.io/</link>
-    <description>Recent content on Terminal</description>
+    <description>Recent content on Sn4pe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2021 Sn4pe</copyright>
@@ -14,7 +14,7 @@
       <pubDate>Tue, 12 Jan 2021 02:47:03 +0100</pubDate>
       
       <guid>https://sn4pe.github.io/2021/hi/</guid>
-      <description></description>
+      <description>I :heart: Hugo!:</description>
     </item>
     
   </channel>

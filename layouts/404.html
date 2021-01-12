@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <div class="post">
+    <h1 class="post-title">404 — {{ $.Site.Params.missingContentMessage | default "Page not found... 🤒👉👈" }}</h1>
+
+    <div class="post-content">
+      <a href="{{ "/" | absURL }}">{{ $.Site.Params.missingBackButtonLabel | default "Back to home page" }}&nbsp;→</a>
+    </div>
+
+  </div>
+{{ end }}

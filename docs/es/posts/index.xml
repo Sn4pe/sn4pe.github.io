@@ -6,14 +6,28 @@
     <description>Recent content in Posts on Sn4pe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>Sn4pe</copyright>
     <lastBuildDate>Tue, 12 Jan 2021 02:47:03 +0100</lastBuildDate><atom:link href="https://sn4pe.github.io/es/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hola</title>
-      <link>https://sn4pe.github.io/es/2021/hola/</link>
+      <title>adios</title>
+      <link>https://sn4pe.github.io/es/2021/adios/</link>
       <pubDate>Tue, 12 Jan 2021 02:47:03 +0100</pubDate>
       
-      <guid>https://sn4pe.github.io/es/2021/hola/</guid>
-      <description>I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated. Thank you for reading!I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated. Thank you for reading!I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated.</description>
+      <guid>https://sn4pe.github.io/es/2021/adios/</guid>
+      <description>:simple_smile: I :heart: Hugo!: 😀 I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated. Thank you for reading!I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated. Thank you for reading!I hope that my blog can help you to understand modern technology and programming a bit better and to make your developer-life at least a bit more uncomplicated.</description>
+    </item>
+    
+    <item>
+      <title>Hola :heart:</title>
+      <link>https://sn4pe.github.io/es/2021/hola-heart/</link>
+      <pubDate>Tue, 12 Jan 2021 02:47:03 +0100</pubDate>
+      
+      <guid>https://sn4pe.github.io/es/2021/hola-heart/</guid>
+      <description>Emphasis, aka italics, with asterisks or underscores.
+Strong emphasis, aka bold, with asterisks or underscores.
+Combined emphasis with asterisks and underscores.
+Strikethrough uses two tildes. Scratch this.
+ First ordered list item Another item ⋅⋅* Unordered sub-list. Actual numbers don&amp;rsquo;t matter, just that it&amp;rsquo;s a number ⋅⋅1. Ordered sub-list And another item.  ⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we&amp;rsquo;ll use three here to also align the raw Markdown).</description>
     </item>
     
   </channel>
