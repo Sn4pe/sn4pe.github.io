@@ -3,6 +3,7 @@ title = "about"
 date = "2020-12-20"
 author = "Damon Leven"
 description = "A little introduction into my blog and a quick roundup what it’s about and what you can expect."
+draft = true
 +++
 
 Welcome to my blog! It will cover a wide range of different topics around programming, Linux, hosting and similar. Off topic and such will be covered a bit as well, but programming will be the main focus of this Blog. 

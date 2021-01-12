@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/2021/hi/</loc>
+    <lastmod>2021-01-12T02:47:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2021-01-12T02:47:03+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2021-01-12T02:47:03+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/"
+                />
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="/es/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/tags/"
+                />
+  </url>
+  
+</urlset>

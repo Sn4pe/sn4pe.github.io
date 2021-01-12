@@ -3,6 +3,7 @@ title = "Contact"
 date = "2020-12-20"
 author = "Damon Leven"
 description = "A quick overview about the authors social media and how one could contact him for different reasons, like questions, references or complains."
+draft = true
 +++ 
 
 OpenFoxBlog is run by Damon / Stax. You can find him on the following social media accounts: 
