@@ -2,16 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://sn4pe.com/first_post/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/posts/</loc><lastmod>2021-04-29T02:08:11&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://sn4pe.com/en/posts/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="es"
-                    href="https://sn4pe.com/posts/"
-                    /></url><url>
+            <loc>https://sn4pe.com/posts/</loc><lastmod>2021-04-29T02:08:11&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://sn4pe.com/</loc><lastmod>2021-04-29T02:08:11&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
@@ -22,26 +13,9 @@
                     href="https://sn4pe.com/"
                     /></url><url>
             <loc>https://sn4pe.com/wip/</loc><lastmod>2021-04-29T02:08:11&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://sn4pe.com/categories/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://sn4pe.com/en/categories/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="es"
-                    href="https://sn4pe.com/categories/"
-                    /></url><url>
-            <loc>https://sn4pe.com/tags/easy/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/hogwarts-dobby-vulnhub/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://sn4pe.com/en/hogwarts-dobby-vulnhub/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="es"
-                    href="https://sn4pe.com/hogwarts-dobby-vulnhub/"
-                    /></url><url>
-            <loc>https://sn4pe.com/tags/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://sn4pe.com/tags/sn4pe/</loc><lastmod>2021-01-20T01:29:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://sn4pe.com/about/</loc><lastmod>2021-01-20T01:29:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://sn4pe.com/tags/</loc><lastmod>2021-01-20T01:29:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://sn4pe.com/en/tags/"
@@ -50,31 +24,12 @@
                     hreflang="es"
                     href="https://sn4pe.com/tags/"
                     /></url><url>
-            <loc>https://sn4pe.com/tags/vulnhub/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://sn4pe.com/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://sn4pe.com/en/tags/vulnhub/"
+                        href="https://sn4pe.com/en/categories/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="es"
-                    href="https://sn4pe.com/tags/vulnhub/"
-                    /></url><url>
-            <loc>https://sn4pe.com/categories/vulnhub/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/tags/walkthrough/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/tags/write-up/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://sn4pe.com/en/tags/write-up/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="es"
-                    href="https://sn4pe.com/tags/write-up/"
-                    /></url><url>
-            <loc>https://sn4pe.com/tags/hackmyvm/</loc><lastmod>2021-01-21T05:03:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/categories/hackmyvm/</loc><lastmod>2021-01-21T05:03:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/webmaster-hackmyvm/</loc><lastmod>2021-01-21T05:03:25&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/tags/sn4pe/</loc><lastmod>2021-01-20T01:29:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/about/</loc><lastmod>2021-01-20T01:29:03&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/tags/html/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/tags/markdown/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://sn4pe.com/categories/markdown/</loc><lastmod>2020-01-01T16:45:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+                    href="https://sn4pe.com/categories/"
+                    /></url></urlset>

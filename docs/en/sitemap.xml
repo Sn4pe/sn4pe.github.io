@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://sn4pe.com/en/categories/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://sn4pe.com/en/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
                         href="https://sn4pe.com/categories/"
@@ -11,25 +11,7 @@
                     hreflang="en"
                     href="https://sn4pe.com/en/categories/"
                     /></url><url>
-            <loc>https://sn4pe.com/en/hogwarts-dobby-vulnhub/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://sn4pe.com/hogwarts-dobby-vulnhub/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://sn4pe.com/en/hogwarts-dobby-vulnhub/"
-                    /></url><url>
-            <loc>https://sn4pe.com/en/posts/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://sn4pe.com/posts/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://sn4pe.com/en/posts/"
-                    /></url><url>
-            <loc>https://sn4pe.com/en/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://sn4pe.com/en/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
                         href="https://sn4pe.com/"
@@ -38,7 +20,7 @@
                     hreflang="en"
                     href="https://sn4pe.com/en/"
                     /></url><url>
-            <loc>https://sn4pe.com/en/tags/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://sn4pe.com/en/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
                         href="https://sn4pe.com/tags/"
@@ -46,23 +28,4 @@
                     rel="alternate"
                     hreflang="en"
                     href="https://sn4pe.com/en/tags/"
-                    /></url><url>
-            <loc>https://sn4pe.com/en/tags/vulnhub/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://sn4pe.com/tags/vulnhub/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://sn4pe.com/en/tags/vulnhub/"
-                    /></url><url>
-            <loc>https://sn4pe.com/en/tags/write-up/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://sn4pe.com/tags/write-up/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://sn4pe.com/en/tags/write-up/"
-                    /></url><url>
-            <loc>https://sn4pe.com/en/categories/write-up/</loc><lastmod>2021-02-02T04:13:30&#43;01:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+                    /></url></urlset>
