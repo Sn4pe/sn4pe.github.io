@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Todo Artículos - Sn4pe</title>
+        <link>https://sn4pe.com/posts/</link>
+        <description>Todo Artículos | Sn4pe</description>
+        <generator>Hugo -- gohugo.io</generator><language>es</language><lastBuildDate>Thu, 29 Apr 2021 02:08:11 &#43;0200</lastBuildDate><atom:link href="https://sn4pe.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>WIP</title>
+    <link>https://sn4pe.com/wip/</link>
+    <pubDate>Thu, 29 Apr 2021 02:08:11 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://sn4pe.com/wip/</guid>
+    <description><![CDATA[<h2 id="en-construcción">En construcción.</h2>]]></description>
+</item></channel>
+</rss>
