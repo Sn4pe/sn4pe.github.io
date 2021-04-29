@@ -1,0 +1,34 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Write-Up - Tag - Sn4pe</title>
+        <link>https://sn4pe.com/en/tags/write-up/</link>
+        <description>Write-Up - Tag - Sn4pe</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 02 Feb 2021 04:13:30 &#43;0100</lastBuildDate><atom:link href="https://sn4pe.com/en/tags/write-up/" rel="self" type="application/rss+xml" /><item>
+    <title>Hogwarts: Dobby - VulnHub</title>
+    <link>https://sn4pe.com/en/hogwarts-dobby-vulnhub/</link>
+    <pubDate>Tue, 02 Feb 2021 04:13:30 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>https://sn4pe.com/en/hogwarts-dobby-vulnhub/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="https://media.giphy.com/media/T1HNGhvx14iru/giphy.gif" referrerpolicy="no-referrer">
+            </div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li><strong>Name</strong>: Hogwarts: Dobby</li>
+<li><strong>URL</strong>: <a href="https://www.vulnhub.com/entry/hogwarts-dobby,597/">https://www.vulnhub.com/entry/hogwarts-dobby,597/</a></li>
+<li><strong>Release</strong> Date: 8 Nov 2020</li>
+<li><strong>Author</strong>: BLY</li>
+<li><strong>Series</strong>: Hogwarts</li>
+<li><strong>Operative System</strong>: Linux 🐧</li>
+<li><strong>Difficulty Stated</strong>: Easy</li>
+<li><strong>Difficulty I found</strong>: Easy</li>
+<li><strong>OS used</strong>: Parrot OS</li>
+</ul>
+</div>
+        </div>
+    </div>]]></description>
+</item></channel>
+</rss>

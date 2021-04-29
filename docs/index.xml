@@ -1,21 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Sn4pe</title>
-    <link>https://sn4pe.github.io/</link>
-    <description>Recent content on Sn4pe</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© 2021 Sn4pe</copyright>
-    <lastBuildDate>Tue, 12 Jan 2021 02:47:03 +0100</lastBuildDate><atom:link href="https://sn4pe.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hi</title>
-      <link>https://sn4pe.github.io/2021/hi/</link>
-      <pubDate>Tue, 12 Jan 2021 02:47:03 +0100</pubDate>
-      
-      <guid>https://sn4pe.github.io/2021/hi/</guid>
-      <description></description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Sn4pe</title>
+        <link>https://sn4pe.com/</link>
+        <description>Sn4pe</description>
+        <generator>Hugo -- gohugo.io</generator><language>es</language><lastBuildDate>Thu, 29 Apr 2021 02:08:11 &#43;0200</lastBuildDate>
+            <atom:link href="https://sn4pe.com/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Basic Markdown Syntax</title>
+    <link>https://sn4pe.com/first_post/</link>
+    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
+    <author>Autor</author>
+    <guid>https://sn4pe.com/first_post/</guid>
+    <description><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files.</p>]]></description>
+</item><item>
+    <title>WIP</title>
+    <link>https://sn4pe.com/wip/</link>
+    <pubDate>Thu, 29 Apr 2021 02:08:11 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://sn4pe.com/wip/</guid>
+    <description><![CDATA[<h2 id="en-construcción">En construcción.</h2>]]></description>
+</item><item>
+    <title>Hogwarts: Dobby - VulnHub (Walkthrough)</title>
+    <link>https://sn4pe.com/hogwarts-dobby-vulnhub/</link>
+    <pubDate>Tue, 02 Feb 2021 04:13:30 &#43;0100</pubDate>
+    <author>Autor</author>
+    <guid>https://sn4pe.com/hogwarts-dobby-vulnhub/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="https://media.giphy.com/media/T1HNGhvx14iru/giphy.gif" referrerpolicy="no-referrer">
+            </div>]]></description>
+</item><item>
+    <title>Webmaster - HackMyVm</title>
+    <link>https://sn4pe.com/webmaster-hackmyvm/</link>
+    <pubDate>Thu, 21 Jan 2021 05:03:25 &#43;0100</pubDate>
+    <author>Autor</author>
+    <guid>https://sn4pe.com/webmaster-hackmyvm/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
 </rss>
