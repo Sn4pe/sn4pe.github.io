@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Sn4pe - Etiqueta - Sn4pe</title>
+        <link>https://sn4pe.com/tags/sn4pe/</link>
+        <description>Sn4pe - Etiqueta - Sn4pe</description>
+        <generator>Hugo -- gohugo.io</generator><language>es</language><lastBuildDate>Wed, 20 Jan 2021 01:29:03 &#43;0100</lastBuildDate><atom:link href="https://sn4pe.com/tags/sn4pe/" rel="self" type="application/rss+xml" /><item>
+    <title>Sobre mí</title>
+    <link>https://sn4pe.com/about/</link>
+    <pubDate>Wed, 20 Jan 2021 01:29:03 &#43;0100</pubDate>
+    <author>Autor</author>
+    <guid>https://sn4pe.com/about/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/about.gif" referrerpolicy="no-referrer">
+            </div>EN CONSTRUCCIÓN!]]></description>
+</item></channel>
+</rss>
