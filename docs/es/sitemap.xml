@@ -2,32 +2,32 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://sn4pe.com/es/posts/</loc><lastmod>2022-05-12T01:30:39&#43;02:00</lastmod></url><url>
-            <loc>https://sn4pe.com/es/</loc><lastmod>2022-05-12T01:30:39&#43;02:00</lastmod><xhtml:link
+            <loc>https://sn4pe.com/posts/</loc><lastmod>2022-05-12T01:30:39&#43;02:00</lastmod></url><url>
+            <loc>https://sn4pe.com/</loc><lastmod>2022-05-12T01:30:39&#43;02:00</lastmod><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://sn4pe.com/"
+                        href="https://sn4pe.com/en/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="es"
-                    href="https://sn4pe.com/es/"
+                    href="https://sn4pe.com/"
                     /></url><url>
-            <loc>https://sn4pe.com/es/posts/test/</loc><lastmod>2022-05-12T01:30:39&#43;02:00</lastmod></url><url>
-            <loc>https://sn4pe.com/es/categories/</loc><xhtml:link
+            <loc>https://sn4pe.com/posts/test/</loc><lastmod>2022-05-12T01:30:39&#43;02:00</lastmod></url><url>
+            <loc>https://sn4pe.com/categories/</loc><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://sn4pe.com/categories/"
+                        href="https://sn4pe.com/en/categories/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="es"
-                    href="https://sn4pe.com/es/categories/"
+                    href="https://sn4pe.com/categories/"
                     /></url><url>
-            <loc>https://sn4pe.com/es/tags/</loc><xhtml:link
+            <loc>https://sn4pe.com/tags/</loc><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://sn4pe.com/tags/"
+                        href="https://sn4pe.com/en/tags/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="es"
-                    href="https://sn4pe.com/es/tags/"
+                    href="https://sn4pe.com/tags/"
                     /></url></urlset>
