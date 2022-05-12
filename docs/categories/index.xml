@@ -1,7 +1,7 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Categories - Category - My New Hugo Site</title>
+        <title>Categories - Category - Sn4pe</title>
         <link>https://sn4pe.com/categories/</link>
-        <description>Categories - Category - My New Hugo Site</description>
+        <description>Categories - Category - Sn4pe</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://sn4pe.com/categories/" rel="self" type="application/rss+xml" /></channel>
 </rss>
