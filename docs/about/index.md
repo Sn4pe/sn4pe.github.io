@@ -1,4 +1,0 @@
-# Sobre mí
-
-
-EN CONSTRUCCIÓN!
