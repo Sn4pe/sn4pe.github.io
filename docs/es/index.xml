@@ -3,7 +3,16 @@
         <title>Sn4pe</title>
         <link>https://sn4pe.com/es/</link>
         <description>This is my cool site</description>
-        <generator>Hugo -- gohugo.io</generator><language>es</language>
+        <generator>Hugo -- gohugo.io</generator><language>es</language><lastBuildDate>Thu, 12 May 2022 01:30:39 &#43;0200</lastBuildDate>
             <atom:link href="https://sn4pe.com/es/index.xml" rel="self" type="application/rss+xml" />
-        </channel>
+        <item>
+    <title>WIP</title>
+    <link>https://sn4pe.com/es/posts/test/</link>
+    <pubDate>Thu, 12 May 2022 01:30:39 &#43;0200</pubDate>
+    <author>Sn4pe</author>
+    <guid>https://sn4pe.com/es/posts/test/</guid>
+    <description><![CDATA[<h1 id="wip">WIP</h1>
+<h2 id="en-construcción">En construcción.</h2>]]></description>
+</item>
+</channel>
 </rss>
