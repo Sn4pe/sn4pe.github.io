@@ -1,0 +1,253 @@
+---
+import { buttonVariants } from '@/components/ui/button'
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  title?: string
+  // Meta
+  printer?: string
+  slicer?: string
+  profileName?: string
+  // Material & filament
+  filamentType?: string // PLA, PETG, ABS, etc.
+  filamentBrand?: string
+  filamentColor?: string
+  nozzleDiameter?: string | number // e.g., 0.4 mm
+  // Temps
+  nozzleTemp?: string | number // e.g., 205 °C
+  bedTemp?: string | number // e.g., 60 °C
+  // Geometry
+  layerHeight?: string | number // e.g., 0.2 mm
+  walls?: string | number // e.g., 2
+  topBottomLayers?: string | number // e.g., 3/4 or 3
+  // Infill
+  infill?: string | number // 15 %
+  infillPattern?: string // gyroid, grid, etc.
+  // Supports & adhesion
+  supports?: string // none, touch buildplate, everywhere
+  adhesion?: string // none, brim, raft, skirt
+  // Speeds & flow
+  printSpeed?: string | number // mm/s
+  travelSpeed?: string | number // mm/s
+  retractionDistance?: string | number // mm
+  retractionSpeed?: string | number // mm/s
+  flow?: string | number // %
+  // Estimates
+  estTime?: string
+  estWeight?: string // g
+  // Free-form notes
+  notes?: string
+  className?: string
+  layout?: 'accordion' | 'stack'
+}
+
+const props = Astro.props as Props
+const title = props.title ?? '3D Print Settings'
+const layout = props.layout ?? 'stack'
+
+// Build a list of label/value pairs in logical groups. Only include defined values.
+function row(label: string, value: any) {
+  return value !== undefined && value !== '' ? { label, value: String(value) } : null
+}
+
+const meta = [
+  row('Printer', props.printer),
+  row('Slicer / Profile', [props.slicer, props.profileName].filter(Boolean).join(' · ')),
+].filter(Boolean) as { label: string; value: string }[]
+
+const material = [
+  row('Filament', [props.filamentType, props.filamentBrand, props.filamentColor].filter(Boolean).join(' · ')),
+  row('Nozzle', props.nozzleDiameter ? `${props.nozzleDiameter} mm` : undefined),
+].filter(Boolean) as { label: string; value: string }[]
+
+const temps = [
+  row('Nozzle', props.nozzleTemp !== undefined ? `${props.nozzleTemp} °C` : undefined),
+  row('Bed', props.bedTemp !== undefined ? `${props.bedTemp} °C` : undefined),
+].filter(Boolean) as { label: string; value: string }[]
+
+const geometry = [
+  row('Layer height', props.layerHeight !== undefined ? `${props.layerHeight} mm` : undefined),
+  row('Walls', props.walls),
+  row('Top/bottom layers', props.topBottomLayers),
+].filter(Boolean) as { label: string; value: string }[]
+
+const infill = [
+  row('Infill', props.infill !== undefined ? `${props.infill}`.includes('%') ? `${props.infill}` : `${props.infill} %` : undefined),
+  row('Pattern', props.infillPattern),
+].filter(Boolean) as { label: string; value: string }[]
+
+const supports = [
+  row('Supports', props.supports),
+  row('Adhesion', props.adhesion),
+].filter(Boolean) as { label: string; value: string }[]
+
+const speeds = [
+  row('Print speed', props.printSpeed !== undefined ? `${props.printSpeed} mm/s` : undefined),
+  row('Travel speed', props.travelSpeed !== undefined ? `${props.travelSpeed} mm/s` : undefined),
+  row('Retraction', props.retractionDistance !== undefined || props.retractionSpeed !== undefined
+    ? [props.retractionDistance !== undefined ? `${props.retractionDistance} mm` : null, props.retractionSpeed !== undefined ? `${props.retractionSpeed} mm/s` : null].filter(Boolean).join(' · ')
+    : undefined),
+  row('Flow', props.flow !== undefined ? `${props.flow}%` : undefined),
+].filter(Boolean) as { label: string; value: string }[]
+
+const estimates = [
+  row('Estimated time', props.estTime),
+  row('Estimated weight', props.estWeight),
+].filter(Boolean) as { label: string; value: string }[]
+
+const notes = props.notes
+
+const sections = [
+  { key: 'meta', title: 'Profile', icon: 'lucide:settings-2', items: meta },
+  { key: 'material', title: 'Material', icon: 'lucide:badge', items: material },
+  { key: 'temps', title: 'Temperatures', icon: 'lucide:thermometer', items: temps },
+  { key: 'geometry', title: 'Geometry', icon: 'lucide:ruler', items: geometry },
+  { key: 'infill', title: 'Infill', icon: 'lucide:boxes', items: infill },
+  { key: 'supports', title: 'Supports', icon: 'lucide:shapes', items: supports },
+  { key: 'speeds', title: 'Speeds', icon: 'lucide:gauge', items: speeds },
+  { key: 'estimates', title: 'Estimates', icon: 'lucide:scale', items: estimates },
+].filter((s) => s.items.length > 0)
+
+const hasAny = sections.length > 0 || !!notes
+---
+
+{hasAny && (
+  <div class={`rounded-xl border ${props.className ?? ''}`}>
+    <div class="flex items-center justify-between gap-2 border-b px-4 py-3">
+      <div class="flex items-center gap-2">
+        <Icon name="lucide:printer" class="size-4" />
+        <h2 class="m-0 text-base font-medium">{title}</h2>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          class={buttonVariants({ variant: 'outline', size: 'sm' })}
+          data-action="ps-copy"
+          data-format="md"
+        >
+          <Icon name="lucide:clipboard" class="size-4" />
+          <span>MD</span>
+        </button>
+        <button
+          type="button"
+          class={buttonVariants({ variant: 'outline', size: 'sm' })}
+          data-action="ps-copy"
+          data-format="json"
+        >
+          <Icon name="lucide:clipboard-copy" class="size-4" />
+          <span>JSON</span>
+        </button>
+      </div>
+    </div>
+
+    {layout === 'stack' ? (
+      <div class="p-4 space-y-4">
+        {sections.map((section) => (
+          <section class="rounded-lg border bg-muted/20 shadow-sm">
+            <div class="flex items-center gap-2 border-b px-4 py-2">
+              <Icon name={section.icon as any} class="size-4" />
+              <h3 class="m-0 text-sm font-medium">{section.title}</h3>
+            </div>
+            <div class="px-4 py-3">
+              <dl class="grid grid-cols-1 md:grid-cols-[12rem_1fr] gap-x-4 gap-y-2 text-sm leading-relaxed">
+                {section.items.map((it) => (
+                  <>
+                    <dt class="text-muted-foreground pr-2">{it.label}</dt>
+                    <dd class="font-medium text-foreground break-words whitespace-pre-wrap">{it.value}</dd>
+                  </>
+                ))}
+              </dl>
+            </div>
+          </section>
+        ))}
+      </div>
+    ) : (
+      <div class="grid gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
+        {sections.map((section) => (
+          <div class="rounded-lg border p-3">
+            <div class="mb-2 flex items-center gap-2">
+              <Icon name={section.icon as any} class="size-4" />
+              <div class="text-sm font-medium">{section.title}</div>
+            </div>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
+              {section.items.map((it) => (
+                <>
+                  <dt class="text-muted-foreground">{it.label}</dt>
+                  <dd class="font-medium">{it.value}</dd>
+                </>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {notes && (
+      <div class="border-t px-4 py-3 text-sm">
+        <div class="mb-1 font-medium">Notes</div>
+        <p class="m-0 text-muted-foreground">{notes}</p>
+      </div>
+    )}
+  </div>
+)}
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const root = document.currentScript?.closest('div')?.parentElement
+    if (!root) return
+
+    function collectMarkdown() {
+      const titleEl = root.querySelector('h2')
+      const sectionEls = root.querySelectorAll('div.rounded-lg.border')
+      const lines = [`## ${titleEl?.textContent?.trim() || '3D Print Settings'}`]
+      sectionEls.forEach((sec) => {
+        const header = sec.querySelector('.font-medium')?.textContent?.trim() || ''
+        const dts = sec.querySelectorAll('dt')
+        const dds = sec.querySelectorAll('dd')
+        lines.push(`\n### ${header}`)
+        dts.forEach((dt, i) => {
+          const dd = dds[i]
+          lines.push(`- ${dt.textContent?.trim()}: ${dd?.textContent?.trim()}`)
+        })
+      })
+      const notesTitle = root.querySelector('div.font-medium + p')
+      return lines.join('\n')
+    }
+
+    function collectJSON() {
+      const data = {}
+      root.querySelectorAll('div.rounded-lg.border').forEach((sec) => {
+        const header = sec.querySelector('.font-medium')?.textContent?.trim() || ''
+        const entries = {}
+        const dts = sec.querySelectorAll('dt')
+        const dds = sec.querySelectorAll('dd')
+        dts.forEach((dt, i) => {
+          entries[dt.textContent?.trim() || `k${i}`] = dds[i]?.textContent?.trim() || ''
+        })
+        data[header] = entries
+      })
+      const notesLabel = root.querySelector('div.border-t .font-medium')?.textContent?.trim()
+      const notesText = root.querySelector('div.border-t p')?.textContent?.trim()
+      if (notesLabel && notesText) {
+        data[notesLabel] = notesText
+      }
+      return JSON.stringify(data, null, 2)
+    }
+
+    root.querySelectorAll('button[data-action="ps-copy"]').forEach((btn) => {
+      if ((btn as any)._bound) return
+      ;(btn as any)._bound = true
+      btn.addEventListener('click', async () => {
+        const fmt = btn.getAttribute('data-format')
+        const text = fmt === 'json' ? collectJSON() : collectMarkdown()
+        try {
+          await navigator.clipboard.writeText(text)
+          btn.classList.add('ring-2', 'ring-green-500/50')
+          setTimeout(() => btn.classList.remove('ring-2', 'ring-green-500/50'), 1000)
+        } catch (e) {
+          window.prompt('Copy the content:', text)
+        }
+      })
+    })
+  })
+</script>

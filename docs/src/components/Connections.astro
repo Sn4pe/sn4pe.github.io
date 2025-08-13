@@ -1,0 +1,164 @@
+---
+import { buttonVariants } from '@/components/ui/button'
+import { Icon } from 'astro-icon/components'
+
+interface Line {
+  left: string
+  right: string
+  note?: string
+}
+
+interface Props {
+  title?: string
+  leftLabel?: string
+  rightLabel?: string
+  lines: Line[]
+  className?: string
+  variant?: 'compact' | 'table'
+}
+
+const {
+  title = 'Connections',
+  leftLabel = 'Side A',
+  rightLabel = 'Side B',
+  lines = [],
+  className,
+  variant = 'compact',
+} = Astro.props as Props
+
+const hasNotes = lines.some((l) => !!l.note)
+
+function toText() {
+  const header = `${leftLabel} — ${rightLabel}`
+  const body = lines
+    .map((l) => `${l.left} — ${l.right}${l.note ? ` (${l.note})` : ''}`)
+    .join('\n')
+  return `${header}\n${body}`
+}
+---
+
+{variant === 'table' && (
+  <div data-connections-root class={`rounded-xl border ${className ?? ''}`}>
+    <div class="flex items-center justify-between gap-2 border-b px-4 py-3">
+      <div class="flex items-center gap-2">
+        <Icon name="lucide:cable" class="size-4" />
+        <h2 class="m-0 text-base font-medium">{title}</h2>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" class={buttonVariants({ variant: 'outline', size: 'sm' })} data-action="conn-copy">
+          <Icon name="lucide:clipboard" class="size-4" />
+          <span>Copy</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full border-separate border-spacing-0 text-sm">
+        <thead>
+          <tr class="bg-muted/40 text-left">
+            <th class="px-4 py-2 font-medium">{leftLabel}</th>
+            <th class="px-4 py-2 font-medium">{rightLabel}</th>
+            {hasNotes && <th class="px-4 py-2 font-medium">Notes</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {lines.map((l) => (
+            <tr class="border-b">
+              <td class="px-4 py-2 align-top font-mono">{l.left}</td>
+              <td class="px-4 py-2 align-top font-mono">{l.right}</td>
+              {hasNotes && <td class="px-4 py-2 align-top text-muted-foreground">{l.note ?? ''}</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+)}
+{variant !== 'table' && (
+  <div data-connections-root data-left={leftLabel} data-right={rightLabel} class={`not-prose ${className ?? ''}`}>
+    <div class="flex items-center gap-2">
+      <Icon name="lucide:cable" class="size-4 text-muted-foreground" />
+      <span class="text-sm font-medium text-muted-foreground">{title}</span>
+      <div class="flex-1"></div>
+      <button
+        type="button"
+        title="Copy"
+        class={buttonVariants({ variant: 'ghost', size: 'icon' }) + ' size-7'}
+        data-action="conn-copy"
+      >
+        <Icon name="lucide:clipboard" class="size-4" />
+      </button>
+    </div>
+    <ul class="mt-2 flex flex-wrap gap-2 text-sm" data-layout="compact-list">
+      {lines.map((l) => (
+        <li class="inline-flex items-center gap-1 rounded-md border bg-muted/40 px-2 py-1">
+          <code class="font-mono text-xs">{l.left}</code>
+          <span class="text-xs">→</span>
+          <code class="font-mono text-xs">{l.right}</code>
+          {l.note && <span class="text-[11px] text-muted-foreground">({l.note})</span>}
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const root = document.currentScript?.closest('[data-connections-root]')
+    if (!root) return
+    const btn = root.querySelector('button[data-action="conn-copy"]')
+    if (!btn || (btn)._bound) return
+    ;(btn)._bound = true
+
+    function toTextFromTable(container) {
+      const leftLabel = container.querySelector('thead th:nth-child(1)')?.textContent?.trim() || 'Side A'
+      const rightLabel = container.querySelector('thead th:nth-child(2)')?.textContent?.trim() || 'Side B'
+      const hasNotes = !!container.querySelector('thead th:nth-child(3)')
+      const rows = container.querySelectorAll('tbody tr')
+      const lines = Array.from(rows).map((tr) => {
+        const tds = tr.querySelectorAll('td')
+        const left = tds[0]?.textContent?.trim() || ''
+        const right = tds[1]?.textContent?.trim() || ''
+        const note = hasNotes ? tds[2]?.textContent?.trim() : ''
+        return `${left} — ${right}${note ? ` (${note})` : ''}`
+      })
+      return { leftLabel, rightLabel, lines }
+    }
+
+    function toText() {
+      // Try table layout first
+      const table = root.querySelector('table')
+      if (table) {
+        const { leftLabel, rightLabel, lines } = toTextFromTable(root)
+        return `${leftLabel} — ${rightLabel}\n${lines.join('\n')}`
+      }
+      // Fallback to compact layout
+      const list = root.querySelector('ul[data-layout="compact-list"]')
+      if (list) {
+        const leftLabel = root.getAttribute('data-left') || 'Side A'
+        const rightLabel = root.getAttribute('data-right') || 'Side B'
+        const items = list.querySelectorAll('li')
+        const lines = Array.from(items).map((li) => {
+          const codes = li.querySelectorAll('code')
+          const left = codes[0]?.textContent?.trim() || ''
+          const right = codes[1]?.textContent?.trim() || ''
+          const note = li.querySelector('span')?.textContent?.trim() || ''
+          return `${left} — ${right}${note ? ` ${note}` : ''}`
+        })
+        return `${leftLabel} — ${rightLabel}\n${lines.join('\n')}`
+      }
+      return ''
+    }
+
+    btn.addEventListener('click', async () => {
+      const data = toText()
+      try {
+        await navigator.clipboard.writeText(data)
+        btn.classList.add('ring-2', 'ring-green-500/50')
+        setTimeout(() => btn.classList.remove('ring-2', 'ring-green-500/50'), 1000)
+      } catch (e) {
+        window.prompt('Copy the content:', data)
+      }
+    })
+  })
+</script>

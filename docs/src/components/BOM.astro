@@ -1,0 +1,167 @@
+---
+import { buttonVariants } from '@/components/ui/button'
+import { Icon } from 'astro-icon/components'
+
+interface BomItem {
+  name: string
+  qty: number
+  unit?: string
+  unitPrice?: number
+  link?: string
+  notes?: string
+}
+
+interface Props {
+  items: BomItem[]
+  currency?: string // e.g., "€", "$", "£"
+  title?: string
+  className?: string
+}
+
+const { items, currency = '€', title = 'Bill of Materials (BOM)', className } = Astro.props as Props
+
+const total = (items || []).reduce((acc, it) => acc + (it.unitPrice ? it.unitPrice * (it.qty || 0) : 0), 0)
+---
+
+<div class={`rounded-xl border ${className ?? ''}`}>
+  <div class="flex items-center justify-between gap-2 border-b px-4 py-3">
+    <div class="flex items-center gap-2">
+      <Icon name="lucide:list-checks" class="size-4" />
+      <h2 class="m-0 text-base font-medium">{title}</h2>
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        class={buttonVariants({ variant: 'outline', size: 'sm' })}
+        data-action="bom-copy"
+        data-format="csv"
+      >
+        <Icon name="lucide:clipboard-copy" class="size-4" />
+        <span>CSV</span>
+      </button>
+      <button
+        type="button"
+        class={buttonVariants({ variant: 'outline', size: 'sm' })}
+        data-action="bom-copy"
+        data-format="md"
+      >
+        <Icon name="lucide:clipboard" class="size-4" />
+        <span>MD</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border-separate border-spacing-0 text-sm">
+      <thead>
+        <tr class="bg-muted/40 text-left">
+          <th class="px-4 py-2 font-medium">#</th>
+          <th class="px-4 py-2 font-medium">Component</th>
+          <th class="px-4 py-2 font-medium">Qty</th>
+          <th class="px-4 py-2 font-medium">Unit</th>
+          <th class="px-4 py-2 font-medium">Unit price</th>
+          <th class="px-4 py-2 font-medium">Subtotal</th>
+          <th class="px-4 py-2 font-medium">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((it, i) => {
+          const subtotal = (it.unitPrice ?? 0) * (it.qty ?? 0)
+          return (
+            <tr class="border-b">
+              <td class="px-4 py-2 align-top text-muted-foreground">{i + 1}</td>
+              <td class="px-4 py-2 align-top">
+                {it.link ? (
+                  <a href={it.link} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">
+                    {it.name}
+                  </a>
+                ) : (
+                  <span>{it.name}</span>
+                )}
+              </td>
+              <td class="px-4 py-2 align-top">{it.qty}</td>
+              <td class="px-4 py-2 align-top text-muted-foreground">{it.unit ?? ''}</td>
+              <td class="px-4 py-2 align-top">{typeof it.unitPrice === 'number' ? `${currency}${it.unitPrice.toFixed(2)}` : '—'}</td>
+              <td class="px-4 py-2 align-top font-medium">{subtotal ? `${currency}${subtotal.toFixed(2)}` : '—'}</td>
+              <td class="px-4 py-2 align-top text-muted-foreground">{it.notes ?? ''}</td>
+            </tr>
+          )
+        })}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="px-4 py-3" colspan={4}></td>
+          <td class="px-4 py-3 text-right font-medium">Total</td>
+          <td class="px-4 py-3 font-semibold">{currency}{total.toFixed(2)}</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<script>
+  // Enhance copy buttons on page load/navigation
+  document.addEventListener('astro:page-load', () => {
+    const root = document.currentScript?.closest('div')?.parentElement
+    if (!root) return
+    const table = root.querySelector('table')
+    const headers = Array.from(table?.querySelectorAll('thead th') || []).map((th) => th.textContent?.trim() || '')
+
+    function toCSV() {
+      const rows = []
+      rows.push(headers.join(','))
+      const bodyRows = table?.querySelectorAll('tbody tr') || []
+      bodyRows.forEach((tr) => {
+        const cols = Array.from(tr.querySelectorAll('td')).map((td) => {
+          let text = td.textContent?.trim() || ''
+          if (td.querySelector('a')) {
+            const a = td.querySelector('a')
+            const name = a?.textContent?.trim() || ''
+            const href = a?.getAttribute('href') || ''
+            text = href ? `${name} <${href}>` : name
+          }
+          return '"' + text.replaceAll('"', '""') + '"'
+        })
+        rows.push(cols.join(','))
+      })
+      return rows.join('\n')
+    }
+
+    function toMarkdown() {
+      const sep = `| ${headers.join(' | ')} |\n| ${headers.map(() => '---').join(' | ')} |`
+      const bodyRows = table?.querySelectorAll('tbody tr') || []
+      const lines = [sep]
+      bodyRows.forEach((tr) => {
+        const cols = Array.from(tr.querySelectorAll('td')).map((td) => {
+          const a = td.querySelector('a')
+          if (a) {
+            const name = a.textContent?.trim() || ''
+            const href = a.getAttribute('href') || ''
+            return `[${name}](${href})`
+          }
+          return td.textContent?.trim() || ''
+        })
+        lines.push(`| ${cols.join(' | ')} |`)
+      })
+      return lines.join('\n')
+    }
+
+    root.querySelectorAll('button[data-action="bom-copy"]').forEach((btn) => {
+      if ((btn as any)._bound) return
+      ;(btn as any)._bound = true
+      btn.addEventListener('click', async () => {
+        const fmt = btn.getAttribute('data-format')
+        const data = fmt === 'csv' ? toCSV() : toMarkdown()
+        try {
+          await navigator.clipboard.writeText(data)
+          btn.classList.add('ring-2', 'ring-green-500/50')
+          setTimeout(() => btn.classList.remove('ring-2', 'ring-green-500/50'), 1000)
+        } catch (e) {
+          // fallback
+          window.prompt('Copy the content:', data)
+        }
+      })
+    })
+  })
+</script>

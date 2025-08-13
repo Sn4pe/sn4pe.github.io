@@ -1,0 +1,104 @@
+---
+title: 'Kit inicial para makers: electrónica + impresión 3D'
+description: 'Un ejemplo de post que combina electrónica y modelos 3D, incluyendo enlaces a repo, CAD, STL, BOM, ajustes de impresión y licencia.'
+date: 2025-08-13
+tags: ['electronics', '3d-printing', 'maker']
+authors: ['sn4pe']
+---
+
+## Introducción
+
+Este post es un ejemplo práctico que utiliza todos los campos nuevos pensados para posts de electrónica e impresión 3D. Sirve como plantilla para tus propios proyectos "maker".
+
+## Objetivo del proyecto
+
+Crear un soporte impreso en 3D para un sensor de temperatura que se conecta a un microcontrolador. El diseño del soporte está en CAD y el modelo imprimible está disponible como STL.
+
+## Electrónica: esquema básico
+
+- Microcontrolador: ESP32
+- Sensor: DS18B20 (o similar)
+- Resistencias, cables dupont y protoboard
+
+### Conexiones
+
+
+
+import Connections from '@/components/Connections.astro'
+
+<Connections
+  leftLabel="ESP32"
+  rightLabel="DS18B20"
+  lines={[
+    { left: '3V3', right: 'VCC' },
+    { left: 'GND', right: 'GND' },
+    { left: 'GND', right: 'GND' },
+    { left: 'GND', right: 'GND' },
+    { left: 'GND', right: 'GND' },
+    { left: 'GND', right: 'GND' },
+    { left: 'GND', right: 'GND' },
+    { left: 'GPIO4', right: 'DATA', note: 'con resistencia de pull-up de 4.7k a 3V3' },
+  ]}
+/>
+
+## Impresión 3D: parámetros sugeridos
+
+import PrintSettings from '@/components/PrintSettings.astro'
+
+<PrintSettings
+  printer="Prusa MK3S+"
+  slicer="PrusaSlicer"
+  profileName="0.2mm QUALITY"
+  filamentType="PLA"
+  filamentBrand="Generic"
+  filamentColor="Black"
+  nozzleDiameter={0.4}
+  nozzleTemp={205}
+  bedTemp={60}
+  layerHeight={0.2}
+  walls={2}
+  topBottomLayers="3/3"
+  infill={15}
+  infillPattern="Gyroid"
+  supports="None"
+  adhesion="Skirt"
+  printSpeed={50}
+  travelSpeed={150}
+  retractionDistance={0.8}
+  retractionSpeed={35}
+  flow={100}
+  estTime="1h 45m"
+  estWeight="12 g"
+  notes="Ajustes pensados para rigidez moderada y acabado visual."
+/>
+
+## Bill of Materials (BOM)
+
+import BOM from '@/components/BOM.astro'
+
+<BOM
+  currency="€"
+  items={[
+    { name: 'ESP32 DevKit', qty: 1, unit: 'ud', unitPrice: 7.50, link: 'https://www.amazon.es/s?k=esp32+devkit', notes: 'Cualquier módulo ESP32' },
+    { name: 'Sensor DS18B20', qty: 1, unit: 'ud', unitPrice: 2.10, link: 'https://www.amazon.es/s?k=ds18b20' },
+    { name: 'Resistencia 4.7kΩ', qty: 1, unit: 'ud', unitPrice: 0.05 },
+    { name: 'Cables Dupont', qty: 6, unit: 'ud', unitPrice: 0.02 },
+    { name: 'Soporte impreso 3D (PLA)', qty: 1, unit: 'ud', unitPrice: 0.60, notes: 'Coste estimado de material' }
+  ]}
+/>
+
+## Archivos y recursos
+
+- Repositorio con firmware y documentación (ver frontmatter)
+- Diseño CAD para ajustes del soporte (ver frontmatter)
+- STL listo para imprimir (ver frontmatter)
+- Ajustes de impresión recomendados (ver frontmatter)
+- Licencia del proyecto (ver frontmatter)
+
+## Próximos pasos
+
+- Publicar fotos y resultados
+- Iterar el diseño en CAD según pruebas
+- Documentar mediciones y calibraciones
+
+¡Feliz making! 

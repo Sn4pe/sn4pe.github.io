@@ -1,0 +1,216 @@
+---
+import { SITE } from '@/consts'
+import { buttonVariants } from '@/components/ui/button'
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  id: string
+  title: string
+  className?: string
+}
+
+const { id, title, className } = Astro.props as Props
+
+const absoluteUrl = `${SITE.href}/blog/${id}`
+const encodedUrl = encodeURIComponent(absoluteUrl)
+const encodedTitle = encodeURIComponent(title)
+
+const shareLinks = {
+  twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+  reddit: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
+  whatsapp: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`,
+}
+---
+
+<div class={`relative inline-block ${className ?? ''}`} data-share-root>
+  <button
+    class={buttonVariants({ variant: 'outline', size: 'sm' })}
+    title="Share"
+    aria-label="Share"
+    data-action="toggle-share"
+    type="button"
+  >
+    <Icon name="lucide:share-2" class="size-4" />
+    <span class="sr-only">Share</span>
+  </button>
+
+  <div
+    class="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-md border bg-background p-1 shadow-md hidden"
+    role="menu"
+    aria-label="Share options"
+    data-share-menu
+  >
+    <button
+      class="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+      data-action="native-share"
+      data-share-title={title}
+      data-share-url={absoluteUrl}
+      type="button"
+    >
+      <Icon name="lucide:smartphone" class="size-4" />
+      <span>Share from device</span>
+    </button>
+
+    <button
+      class="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+      data-action="copy"
+      data-share-url={absoluteUrl}
+      type="button"
+      aria-label="Copy link"
+      title="Copy link"
+    >
+      <Icon name="lucide:link" class="size-4" />
+      <span>Copy link</span>
+    </button>
+
+    <a
+      href={shareLinks.twitter}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+      title="Share on X (Twitter)"
+      aria-label="Share on X (Twitter)"
+      role="menuitem"
+    >
+      <Icon name="lucide:twitter" class="size-4" />
+      <span>X (Twitter)</span>
+    </a>
+
+    <a
+      href={shareLinks.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+      title="Share on LinkedIn"
+      aria-label="Share on LinkedIn"
+      role="menuitem"
+    >
+      <Icon name="lucide:linkedin" class="size-4" />
+      <span>LinkedIn</span>
+    </a>
+
+    <a
+      href={shareLinks.reddit}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+      title="Share on Reddit"
+      aria-label="Share on Reddit"
+      role="menuitem"
+    >
+      <Icon name="lucide:rocket" class="size-4" />
+      <span>Reddit</span>
+    </a>
+
+    <a
+      href={shareLinks.whatsapp}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex w-full items-center gap-2 rounded-sm px-2 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+      title="Share on WhatsApp"
+      aria-label="Share on WhatsApp"
+      role="menuitem"
+    >
+      <Icon name="lucide:message-circle" class="size-4" />
+      <span>WhatsApp</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const roots = document.querySelectorAll('[data-share-root]')
+
+    roots.forEach((root) => {
+      const toggleBtn = root.querySelector('[data-action="toggle-share"]') as HTMLButtonElement | null
+      const menu = root.querySelector('[data-share-menu]') as HTMLDivElement | null
+      if (!toggleBtn || !menu) return
+
+      const openMenu = () => {
+        menu.classList.remove('hidden')
+        toggleBtn.setAttribute('aria-expanded', 'true')
+        document.addEventListener('click', onDocClick, { capture: true })
+        document.addEventListener('keydown', onKeydown)
+      }
+
+      const closeMenu = () => {
+        menu.classList.add('hidden')
+        toggleBtn.setAttribute('aria-expanded', 'false')
+        document.removeEventListener('click', onDocClick, { capture: true } as any)
+        document.removeEventListener('keydown', onKeydown)
+      }
+
+      const onDocClick = (e: MouseEvent) => {
+        if (!root.contains(e.target as Node)) {
+          closeMenu()
+        }
+      }
+
+      const onKeydown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') closeMenu()
+      }
+
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation()
+        const isHidden = menu.classList.contains('hidden')
+        if (isHidden) openMenu()
+        else closeMenu()
+      })
+
+      // Hide native share option if not supported
+      const nativeShareBtn = root.querySelector('button[data-action="native-share"]') as HTMLButtonElement | null
+      if (nativeShareBtn && !('share' in navigator)) {
+        nativeShareBtn.style.display = 'none'
+      }
+    })
+
+    const attachCopyHandlers = () => {
+      const copyButtons = document.querySelectorAll<HTMLButtonElement>('button[data-action="copy"][data-share-url]')
+      copyButtons.forEach((btn) => {
+        if ((btn as any)._copyBound) return
+        ;(btn as any)._copyBound = true
+        btn.addEventListener('click', async () => {
+          const url = btn.getAttribute('data-share-url') || window.location.href
+          try {
+            await navigator.clipboard.writeText(url)
+            btn.classList.add('ring-2', 'ring-green-500/50')
+            btn.setAttribute('aria-live', 'polite')
+            const prev = btn.getAttribute('aria-label') || 'Copy link'
+            btn.setAttribute('aria-label', 'Link copied')
+            setTimeout(() => {
+              btn.classList.remove('ring-2', 'ring-green-500/50')
+              btn.setAttribute('aria-label', prev)
+            }, 1200)
+          } catch (_) {
+            window.prompt('Copy the link:', url)
+          }
+        })
+      })
+    }
+
+    const attachNativeShareHandlers = () => {
+      const shareButtons = document.querySelectorAll<HTMLButtonElement>('button[data-action="native-share"][data-share-url]')
+      shareButtons.forEach((btn) => {
+        if ((btn as any)._shareBound) return
+        ;(btn as any)._shareBound = true
+        btn.addEventListener('click', async () => {
+          const url = btn.getAttribute('data-share-url') || window.location.href
+          const title = btn.getAttribute('data-share-title') || document.title
+          try {
+            if (navigator.share) {
+              await navigator.share({ url, title, text: title })
+            } else {
+              await navigator.clipboard.writeText(url)
+            }
+          } catch (_) {
+            // ignore
+          }
+        })
+      })
+    }
+
+    attachCopyHandlers()
+    attachNativeShareHandlers()
+  })
+</script>

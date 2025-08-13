@@ -1,0 +1,107 @@
+---
+import { buttonVariants } from '@/components/ui/button'
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  repo?: string
+  cad?: string
+  model?: string
+  bom?: string
+  printSettings?: string
+  license?: string
+  className?: string
+}
+
+const { repo, cad, model, bom, printSettings, license, className } = Astro.props as Props
+
+const hasAny = !!(repo || cad || model || bom || printSettings || license)
+---
+
+{hasAny && (
+  <div class={`rounded-xl border p-4 ${className ?? ''}`}>
+    <div class="mb-2 flex items-center gap-2">
+      <Icon name="lucide:wrench" class="size-4" />
+      <h2 class="m-0 text-base font-medium">Recursos para makers</h2>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      {repo && (
+        <a
+          href={repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={buttonVariants({ variant: 'outline', size: 'sm' })}
+          title="Repositorio"
+          aria-label="Abrir repositorio"
+        >
+          <Icon name="lucide:code-2" class="size-4" />
+          <span>Repo</span>
+        </a>
+      )}
+
+      {model && (
+        <a
+          href={model}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={buttonVariants({ variant: 'outline', size: 'sm' })}
+          title="Modelo 3D (STL/3MF)"
+          aria-label="Descargar modelo 3D"
+        >
+          <Icon name="lucide:box" class="size-4" />
+          <span>Modelo 3D</span>
+        </a>
+      )}
+
+      {cad && (
+        <a
+          href={cad}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={buttonVariants({ variant: 'outline', size: 'sm' })}
+          title="CAD"
+          aria-label="Abrir diseño CAD"
+        >
+          <Icon name="lucide:box" class="size-4" />
+          <span>CAD</span>
+        </a>
+      )}
+
+      {bom && (
+        <a
+          href={bom}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={buttonVariants({ variant: 'outline', size: 'sm' })}
+          title="Lista de materiales (BOM)"
+          aria-label="Abrir lista de materiales"
+        >
+          <Icon name="lucide:list-checks" class="size-4" />
+          <span>BOM</span>
+        </a>
+      )}
+
+      {printSettings && (
+        <span
+          class={buttonVariants({ variant: 'outline', size: 'sm' })}
+          title="Ajustes de impresión"
+          aria-label="Ajustes de impresión"
+        >
+          <Icon name="lucide:wrench" class="size-4" />
+          <span>{printSettings}</span>
+        </span>
+      )}
+
+      {license && (
+        <span
+          class={buttonVariants({ variant: 'outline', size: 'sm' })}
+          title="Licencia"
+          aria-label="Licencia"
+        >
+          <Icon name="lucide:scale" class="size-4" />
+          <span>{license}</span>
+        </span>
+      )}
+    </div>
+  </div>
+)}
